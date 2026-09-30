@@ -85,3 +85,20 @@ footer { display: flex; justify-content: space-between; border-top: 1px solid va
   .prose { font-size: 17px; }
 }
 @media (prefers-reduced-motion: no-preference) { a, button { transition: color .15s ease; } }
+
+/* Code windows retain native horizontal scrolling and Rouge token colors. */
+.code-window { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin: 24px 0; background: var(--bg); }
+.prose .highlighter-rouge .code-window { margin: 0; }
+.code-toolbar { display: flex; align-items: center; gap: 14px; padding: 10px 16px; background: #eeede8; border-bottom: 1px solid var(--line); font: 12px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+[data-theme="dark"] .code-toolbar { background: #252722; }
+.code-dots { display: flex; gap: 6px; flex-shrink: 0; }
+.code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.code-dots .red { background: #ff5f57; }
+.code-dots .yellow { background: #febc2e; }
+.code-dots .green { background: #28c840; }
+.code-language { color: var(--muted); }
+.code-copy { margin-left: auto; padding: 3px 8px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--muted); font: inherit; cursor: pointer; min-width: 54px; }
+.code-copy:hover { color: var(--text); border-color: var(--muted); }
+.code-copy:disabled { cursor: wait; }
+.prose .code-window pre { margin: 0; padding: 18px 20px; border: 0; border-radius: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
