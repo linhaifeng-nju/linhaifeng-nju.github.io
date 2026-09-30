@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="title desc">
+  <title id="title">个人主页的发布流程</title>
+  <desc id="desc">在本地编写 Markdown，Jekyll 转换成 HTML，GitHub Pages 发布网页。</desc>
+  <rect width="960" height="330" rx="12" fill="#f0f0eb"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif">
+    <text x="40" y="49" fill="#77796f" font-size="13" letter-spacing="2">WRITE → BUILD → PUBLISH</text>
+    <g fill="#f8f7f4" stroke="#d5d7cd"><rect x="40" y="90" width="250" height="155" rx="9"/><rect x="355" y="90" width="250" height="155" rx="9"/><rect x="670" y="90" width="250" height="155" rx="9"/></g>
+    <g fill="#2789d9" font-size="13" font-family="monospace"><text x="64" y="124">01 / LOCAL</text><text x="379" y="124">02 / BUILD</text><text x="694" y="124">03 / WEB</text></g>
+    <g fill="#242421" font-size="25" font-weight="600"><text x="64" y="167">Markdown</text><text x="379" y="167">Jekyll</text><text x="694" y="167">GitHub Pages</text></g>
+    <g fill="#77796f" font-size="15"><text x="64" y="204">写文字、插图片、放代码</text><text x="379" y="204">生成目录与静态文章页</text><text x="694" y="204">发布并直接提供网页</text></g>
+    <g fill="none" stroke="#2789d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M307 167h30m-7-6 7 6-7 6"/><path d="M622 167h30m-7-6 7 6-7 6"/></g>
+    <text x="40" y="290" fill="#77796f" font-size="13">示意图 · 文字内容与页面样式分别维护</text>
+  </g>
+</svg>

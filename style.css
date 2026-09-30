@@ -48,6 +48,22 @@ h1 { font-family: Georgia, "Songti SC", "Noto Serif CJK SC", "SimSun", serif; fo
 .prose .highlighter-rouge { margin: 24px 0; }
 .prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 16px; margin: 24px 0; }
 .prose th, .prose td { border: 1px solid var(--line); padding: 9px 15px; text-align: left; }
+.prose h3 { font-size: 21px; margin: 32px 0 14px; }
+.prose h4 { font-size: 18px; margin: 24px 0 12px; }
+.prose mark { background: #f2e9a7; color: #242421; padding: 1px 4px; }
+.prose kbd { font: 12px/1.5 -apple-system, sans-serif; border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; }
+.prose details { border: 1px solid var(--line); padding: 16px 20px; margin: 24px 0; }
+.prose summary { cursor: pointer; font-family: -apple-system, sans-serif; font-size: 15px; }
+.prose details[open] summary { margin-bottom: 16px; }
+.prose details p:last-child { margin-bottom: 0; }
+.prose .footnotes { font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; margin-top: 40px; }
+.prose :is(h2, h3, h4) { scroll-margin-top: 24px; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kc, .highlight .kt, .highlight .ow { color: var(--accent); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sd { color: #51754b; }
+.highlight .c, .highlight .c1, .highlight .cm { color: var(--muted); }
+.highlight .m, .highlight .mi, .highlight .mf { color: #96623c; }
+[data-theme="dark"] .highlight :is(.s, .s1, .s2, .sd) { color: #a4c49e; }
+[data-theme="dark"] .highlight :is(.m, .mi, .mf) { color: #dbab84; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
 .pagination { display: flex; justify-content: space-between; gap: 16px; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13px; }
 .pagination a { color: var(--text); }
