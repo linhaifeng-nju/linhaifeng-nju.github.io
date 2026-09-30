@@ -33,7 +33,7 @@
           <div class="meta">{{ page.category | default: 'Work' }}{% if page.date %} · {{ page.date | date: "%Y-%m-%d" }}{% endif %}</div>
           <h1>{{ page.title | escape }}</h1>
         </header>
-        <div class="prose">{{ content }}</div>
+        <div class="prose">{% include lazy-images.html html=content %}</div>
       </article>
     </main>
     <footer><span>Work &amp; Life</span><a href="https://github.com/linhaifeng-nju">GitHub ↗</a></footer>

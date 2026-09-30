@@ -1,0 +1,9 @@
+{%- assign pieces = include.html | split: '<img ' -%}
+{%- for piece in pieces -%}
+  {%- if forloop.first -%}
+    {{- piece -}}
+  {%- else -%}
+    {%- assign image_tag = piece | split: '>' | first -%}
+    <img {% unless image_tag contains 'loading=' or image_tag contains 'loading =' %}loading="lazy" {% endunless %}{% unless image_tag contains 'decoding=' or image_tag contains 'decoding =' %}decoding="async" {% endunless %}{{ piece }}
+  {%- endif -%}
+{%- endfor -%}

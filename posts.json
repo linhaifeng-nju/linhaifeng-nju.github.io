@@ -13,9 +13,8 @@ permalink: /posts.json
        "category": {{ entry.category | jsonify }},
        "title": {{ entry.title | jsonify }},
        "date": {{ entry.date | date: "%Y-%m-%d" | jsonify }},
-       "summary": {{ entry.summary | default: "" | jsonify }},
-       "url": {{ entry.url | relative_url | jsonify }},
-       "html": {{ entry.content | markdownify | jsonify }}}
+       "summary": {{ entry.summary | default: "" | truncate: 160 | jsonify }},
+       "url": {{ entry.url | relative_url | jsonify }}}
       {%- assign separator = "," -%}
     {%- endunless -%}
   {%- endif -%}
