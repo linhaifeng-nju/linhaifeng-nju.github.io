@@ -1,1 +1,23 @@
-[]
+---
+layout: null
+permalink: /posts.json
+---
+{%- assign entries = site.pages | sort: "path" -%}
+{%- assign separator = "" -%}
+[
+{%- for entry in entries -%}
+  {%- if entry.category == "work" or entry.category == "life" -%}
+    {%- unless entry.listed == false -%}
+      {{ separator }}
+      {"slug": {{ entry.name | remove: ".md" | remove: ".markdown" | jsonify }},
+       "category": {{ entry.category | jsonify }},
+       "title": {{ entry.title | jsonify }},
+       "date": {{ entry.date | date: "%Y-%m-%d" | jsonify }},
+       "summary": {{ entry.summary | default: "" | jsonify }},
+       "url": {{ entry.url | relative_url | jsonify }},
+       "html": {{ entry.content | markdownify | jsonify }}}
+      {%- assign separator = "," -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+]

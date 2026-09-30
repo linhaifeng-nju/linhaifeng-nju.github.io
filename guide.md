@@ -1,5 +1,10 @@
-# 纵有疾风起，人生不言弃
-
+---
+layout: article
+title: "写作与发布指南"
+category: work
+listed: false
+permalink: /guide.html
+---
 主页：https://linhaifeng-nju.github.io
 
 保持米白背景和 Work / Life 排版，文章使用 Markdown 编写，GitHub Pages 自带的 Jekyll 自动生成并发布。
@@ -22,7 +27,7 @@ summary: "这篇文章讲什么。"
 
 ## 小标题
 
-![照片说明](../../images/photo.jpg)
+![照片说明](/images/photo.jpg)
 ```
 
 - 所在文件夹决定 Work / Life 栏目，不需要手动修改列表或 JSON。
@@ -54,5 +59,3 @@ bundle exec jekyll serve --host 127.0.0.1
 Settings → Pages → Deploy from a branch → `main` → `/ (root)`。
 
 GitHub 自动转换 Markdown 并发布静态文件，不需要额外的发布脚本。
-
-在线指南：https://linhaifeng-nju.github.io/guide.html

@@ -1,0 +1,27 @@
+title: 纵有疾风起，人生不言弃
+url: "https://linhaifeng-nju.github.io"
+baseurl: ""
+timezone: Asia/Shanghai
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - templates
+  - tests
+  - preview.py
+defaults:
+  - scope:
+      path: "content/work"
+    values:
+      layout: article
+      category: work
+  - scope:
+      path: "content/life"
+    values:
+      layout: article
+      category: life

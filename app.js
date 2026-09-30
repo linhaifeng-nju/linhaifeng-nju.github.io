@@ -32,11 +32,6 @@ function element(tag, text, className) {
   if (className) node.className = className;
   return node;
 }
-function safeImageSource(value) {
-  if (typeof value !== 'string') return null;
-  const url = new URL(value, location.href);
-  return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
-}
 function render() {
   const [requestedCategory, slug] = location.hash.slice(1).split('/');
   const category = Object.hasOwn(categories, requestedCategory) ? requestedCategory : 'work';
@@ -60,25 +55,8 @@ function render() {
     const head = element('header', undefined, 'article-head');
     head.append(element('div', `${info.title} · ${post.date}`, 'meta'), element('h1', post.title));
     const body = element('div', undefined, 'prose');
-    for (const block of post.body || []) {
-      if (block.type === 'image') {
-        const src = safeImageSource(block.src);
-        if (!src) continue;
-        const figure = element('figure');
-        const img = element('img');
-        img.src = src; img.alt = block.alt || ''; img.loading = 'lazy';
-        figure.append(img);
-        if (block.caption) figure.append(element('figcaption', block.caption));
-        body.append(figure);
-      } else if (block.type === 'code') {
-        const pre = element('pre');
-        pre.append(element('code', block.text));
-        body.append(pre);
-      } else {
-        const tag = { heading: 'h2', quote: 'blockquote' }[block.type] || 'p';
-        body.append(element(tag, block.text));
-      }
-    }
+    // HTML is generated from repository-owned Markdown by Jekyll.
+    body.innerHTML = post.html || '';
     article.append(head, body); main.append(article);
     document.title = `${post.title} · ${motto}`;
   } else {
@@ -90,7 +68,7 @@ function render() {
       for (const item of selected) {
         const li = element('li');
         const link = element('a', undefined, 'post-link');
-        link.href = `#${category}/${item.slug}`;
+        link.href = item.url || `#${category}/${item.slug}`;
         const time = element('time', item.date.replaceAll('-', '.'), 'date');
         time.dateTime = item.date;
         const content = element('div');
@@ -103,14 +81,16 @@ function render() {
     document.title = `${info.title} · ${motto}`;
   }
 }
-window.addEventListener('hashchange', () => { render(); window.scrollTo(0, 0); main.focus({ preventScroll: true }); });
-render();
-fetch('posts.json').then(response => {
-  if (!response.ok) throw new Error('文章加载失败');
-  return response.json();
-}).then(data => {
-  if (!Array.isArray(data)) throw new Error('文章格式错误');
-  posts = data; render();
-}).catch(() => {
-  main.replaceChildren(element('h1', '暂时无法加载文章'), element('p', '请稍后刷新页面。', 'intro'));
-});
+window.addEventListener('hashchange', () => { if (main.hasAttribute('data-article')) return; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true }); });
+if (!main.hasAttribute('data-article')) {
+  render();
+  fetch('posts.json').then(response => {
+    if (!response.ok) throw new Error('文章加载失败');
+    return response.json();
+  }).then(data => {
+    if (!Array.isArray(data)) throw new Error('文章格式错误');
+    posts = data; render();
+  }).catch(() => {
+    main.replaceChildren(element('h1', '暂时无法加载文章'), element('p', '请稍后刷新页面。', 'intro'));
+  });
+}
