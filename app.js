@@ -4,7 +4,6 @@ const categories = {
   life: { title: 'Life', intro: '记录日常，也记录沿途的风景。' },
 };
 const main = document.querySelector('main');
-const themeButton = document.querySelector('#theme');
 const pageSize = 20;
 let posts = [];
 let loaded = false;
@@ -13,21 +12,6 @@ document.querySelector('.skip').addEventListener('click', event => {
   event.preventDefault();
   main.focus();
 });
-
-function setTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  themeButton.setAttribute('aria-label', `切换为${theme === 'dark' ? '浅' : '深'}色模式`);
-}
-let savedTheme;
-try { savedTheme = localStorage.getItem('theme'); } catch {}
-const systemTheme = matchMedia('(prefers-color-scheme: dark)');
-setTheme(['light', 'dark'].includes(savedTheme) ? savedTheme : systemTheme.matches ? 'dark' : 'light');
-themeButton.addEventListener('click', () => {
-  savedTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  setTheme(savedTheme);
-  try { localStorage.setItem('theme', savedTheme); } catch {}
-});
-systemTheme.addEventListener('change', event => { if (!savedTheme) setTheme(event.matches ? 'dark' : 'light'); });
 
 function element(tag, text, className) {
   const node = document.createElement(tag);

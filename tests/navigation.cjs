@@ -12,14 +12,13 @@ class Node {
   focus() {}
 }
 async function setup(data, hash = '#work', article = false, fail = false) {
-  const main = new Node('main'), theme = new Node('button');
+  const main = new Node('main');
   if (article) main.setAttribute('data-article', '');
   const links = ['work', 'life'].map(category => { const n = new Node('a'); n.dataset.category = category; return n; });
   const document = { documentElement: new Node('html'), createElement: tag => new Node(tag),
-    querySelector: selector => selector === 'main' ? main : selector === '#theme' ? theme : new Node('a'), querySelectorAll: () => links };
+    querySelector: selector => selector === 'main' ? main : new Node('a'), querySelectorAll: () => links };
   let fetches = 0;
   const context = { document, URLSearchParams, location: { hash, replace(url) { this.redirect = url; } },
-    localStorage: { getItem() {}, setItem() {} }, matchMedia: () => ({ matches: false, addEventListener() {} }),
     window: { addEventListener() {}, scrollTo() {} }, fetch: async () => { fetches++; return { ok: !fail, json: async () => data }; } };
   vm.createContext(context);
   vm.runInContext(fs.readFileSync('app.js', 'utf8'), context);
